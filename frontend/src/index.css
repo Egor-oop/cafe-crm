@@ -6,3 +6,38 @@
 body {
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+.main {
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.orders__not-done {
+  width: 300px;
+}
+
+.orders__not-done-header {
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  background-color: #bf0505;
+}
+
+.orders__done {
+  width: 300px;
+}
+
+.orders__done-header {
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  background-color: #008707;
+}
+
+.orders__number {
+  font-size: 36px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-weight: 500;
+}
