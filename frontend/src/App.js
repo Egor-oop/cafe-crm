@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       { orders.map(order => (
-        <Order key={order.id} orderId={order.id} isDone={order.isDone} dishes={order.dishes} />
+        <Order key={order.id} orderId={order.id} isDone={order.isDone} orderDishes={order.dishes} />
       )) }
     </div>
   );
