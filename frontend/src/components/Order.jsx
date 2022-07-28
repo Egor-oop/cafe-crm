@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export const Order = ({orderId, isDone, dishes}) => {
+export const Order = ({orderId, isDone, orderDishes}) => {
   return (
     <div className='Order'>
       <p>{ orderId }</p>
       <p>{ isDone ? 'Готов' : 'Готовится' }</p>
-      <p>{ dishes.map(dish => (
+      <p>{ orderDishes.map(dish => (
         dish
       )) }</p>
     </div>
