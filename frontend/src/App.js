@@ -1,4 +1,5 @@
-import { Order } from './components/Order';
+// import { Order } from './components/Order';
+import { UsersOrderView } from './components/UsersOrderView';
 
 import { useState, useEffect } from 'react';
 
@@ -13,14 +14,29 @@ function App() {
       }
     })
     .then((response) => response.json())
-    .then((actualData) => setOrder(actualData));
-  }, []);
+    .then((actualData) => (setOrder(actualData) & console.log(actualData)));
+  }, [ orders ]);
 
   return (
-    <div>
-      { orders.map(order => (
-        <Order key={order.id} orderId={order.id} isDone={order.isDone} orderDishes={order.dishes} />
-      )) }
+    <div className='main'>
+      <div className='orders__not-done'>
+        <h2 className='orders__not-done-header'>Готовятся</h2>
+
+        { orders.map(order => (
+          !order.is_done ?
+            <UsersOrderView key={order.id} orderId={order.id} />
+          : ''
+        )) }
+      </div>
+      <div className='orders__done'>
+        <h2 className='orders__done-header'>Готовы</h2>
+
+        { orders.map(order => (
+          order.is_done ?
+            <UsersOrderView key={order.id} orderId={order.id} />
+          : ''
+        )) }
+      </div>
     </div>
   );
 }
