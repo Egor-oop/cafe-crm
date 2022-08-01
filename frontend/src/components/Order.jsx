@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 export const Order = ({orderId, isDone, orderDishes}) => {
   const [dishes, setDish] = useState([]);
@@ -15,17 +15,22 @@ export const Order = ({orderId, isDone, orderDishes}) => {
   }, []);
 
   return (
-    <div className='Order'>
-      <p>{ orderId }</p>
-      <p>{ isDone ? 'Готов' : 'Готовится' }</p>
-      <p>{ orderDishes.map(orderDish => (
-        dishes.map(dish => (
-          dish.id === orderDish ? dish.name : ''
-          // if (dish.id == orderDish) {
-            
-          // }
-        ))
-      )) }</p>
+    <div className='order'>
+      <h2 className='order__header'>{ orderId }</h2>
+      <p className='order__status'>{ isDone ? 'Готов' : 'Готовится' }</p>
+
+        <ul className='order__dishes'>
+          { orderDishes.map(orderDish => (
+            dishes.map(dish => (
+              dish.id === orderDish.dish ?
+              <li key={ dish.id }>
+                { dish.name } { orderDish.quantity }x
+              </li> 
+              : ''
+            ))
+          )) }
+        </ul>
+
     </div>
   )
 }
