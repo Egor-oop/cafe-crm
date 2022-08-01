@@ -41,3 +41,37 @@ body {
   text-align: center;
   font-weight: 500;
 }
+
+.orders-staff__order {
+  color: #000;
+  text-decoration: none;
+}
+
+.orders-staff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.order {
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #181818;
+}
+
+.dark-bg {
+  background-color: #17171b;
+  min-height: 100vh;
+}
+
+ul.order__dishes {
+  list-style-type: none;
+}
+ul.order__dishes > li {
+  text-indent: 5px;
+}
+ul.order__dishes > li:before {
+  content: "-   ";
+  text-indent: 5px;
+}
