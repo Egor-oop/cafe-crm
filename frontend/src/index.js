@@ -11,6 +11,7 @@ import App from './App';
 import { OrdersStatuses } from './pages/OrdersStatuses';
 import { OrdersStaffView } from './pages/OrdersStaffView';
 import { OrderDetail } from './pages/OrderDetail';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
       <Route path='orders-staff' element={<OrdersStaffView />} />
 
       <Route path='orders-staff/:orderId' element={<OrderDetail />} />
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );
