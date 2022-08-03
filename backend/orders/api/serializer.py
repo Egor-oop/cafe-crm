@@ -39,3 +39,9 @@ class OrderSerializer(WritableNestedModelSerializer,
             OrderItem.objects.create(order=order, **item_data)
 
         return order
+
+
+class OrderNumberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ('id', 'is_done')
