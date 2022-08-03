@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from orders.api.views import OrderNumberList
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -23,4 +25,5 @@ urlpatterns = [
 
     path('api/v1/dishes/', include(('dishes.urls', 'dishes_list'), namespace='dishes_list')),
     path('api/v1/orders/', include(('orders.urls', 'orders_list'), namespace='orders_list')),
+    path('api/v1/orders-numbers/', OrderNumberList.as_view(), name='orders_numbers_list'),
 ]
