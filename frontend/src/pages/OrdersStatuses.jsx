@@ -6,7 +6,7 @@ export const OrdersStatuses = () => {
   const [orders, setOrder] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/v1/orders/', {
+    fetch('http://127.0.0.1:8000/api/v1/orders-numbers/', {
       method: 'GET',
       headers: {
         accept: 'application/json',
