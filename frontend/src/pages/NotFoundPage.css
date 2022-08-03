@@ -1,0 +1,15 @@
+.not-found {
+  text-align: center;
+}
+
+.not-found__header {
+  font-size: 50pt;
+}
+
+.not-found__text {
+  font-size: 16pt;
+}
+
+.not-found__link {
+  font-size: 14pt;
+}
