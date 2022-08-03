@@ -5,7 +5,7 @@ from orders.models import Order
 
 
 class OrderList(generics.ListCreateAPIView):
-    queryset = Order.objects.all()
+    queryset = Order.objects.order_by('-id')
     serializer_class = OrderSerializer
 
 
