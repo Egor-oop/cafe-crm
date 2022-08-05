@@ -10,7 +10,7 @@ import {
 import App from './App';
 import { OrdersStatuses } from './pages/OrdersStatuses';
 import { OrdersStaffView } from './pages/OrdersStaffView';
-import { OrderDetail } from './pages/OrderDetailPage';
+import { OrderDetailPage } from './pages/OrderDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,7 +22,7 @@ root.render(
       <Route path='orders-users' element={<OrdersStatuses />} />
 
       <Route path='orders-staff' element={<OrdersStaffView />} />
-      <Route path='orders-staff/:orderId' element={<OrderDetail />} />
+      <Route path='orders-staff/:orderId' element={<OrderDetailPage />} />
 
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
