@@ -6,15 +6,18 @@ export const OrdersStatuses = () => {
   const [orders, setOrder] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/v1/orders-numbers/', {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-      }
-    })
-      .then((response) => response.json())
-      .then((actualData) => (setOrder(actualData) & console.log(actualData)));
-  }, [orders.is_done]);
+    if (orders.length === 0) {
+      fetch('http://127.0.0.1:8000/api/v1/orders-numbers/', {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+        }
+      })
+        .then((response) => response.json())
+        .then((actualData) => (setOrder(actualData) & console.log(actualData)));
+    }
+    return () => []
+  }, [orders]);
 
   return (
     <div className='main'>
