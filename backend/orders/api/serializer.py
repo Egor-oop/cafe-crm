@@ -6,7 +6,7 @@ from dishes.api.serializers import DishSerializer
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    dish = DishSerializer()
+    dish = DishSerializer(read_only=False)
 
     class Meta:
         model = OrderItem
