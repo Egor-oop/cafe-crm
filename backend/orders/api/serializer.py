@@ -1,13 +1,12 @@
 from rest_framework import serializers
 from orders.models import Order, OrderItem
-from dishes.models import Dish
 from drf_writable_nested import WritableNestedModelSerializer
 
 from dishes.api.serializers import DishSerializer
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    dish = DishSerializer
+    dish = DishSerializer(read_only=False)
 
     class Meta:
         model = OrderItem
@@ -25,10 +24,10 @@ class OrderSerializer(WritableNestedModelSerializer,
         model = Order
         fields = (
             'id',
-            'dishes',
             'is_done',
-            'created_at',
-            'updated_at',
+            'dishes',
+            # 'created_at',
+            # 'updated_at',
         )
 
     def create(self, validated_data):
