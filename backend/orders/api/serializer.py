@@ -6,8 +6,7 @@ from dishes.api.serializers import DishSerializer
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    dish = DishSerializer(read_only=False)
-
+    # dish = DishSerializer(read_only=True)
     class Meta:
         model = OrderItem
         fields = (
@@ -16,8 +15,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         )
 
 
-class OrderSerializer(WritableNestedModelSerializer,
-                      serializers.ModelSerializer):
+class OrderSerializer(serializers.ModelSerializer):
     dishes = OrderItemSerializer(many=True, read_only=False)
 
     class Meta:
@@ -31,13 +29,25 @@ class OrderSerializer(WritableNestedModelSerializer,
         )
 
     def create(self, validated_data):
-        items_data = validated_data.pop('dishes')
+        order_items = validated_data.pop('dishes')
         order = Order.objects.create(**validated_data)
-
-        for item_data in items_data:
-            OrderItem.objects.create(order=order, **item_data)
-
+        for dish in order_items:
+            OrderItem.objects.create(order=order, **dish)
         return order
+    
+    def update(self, instance, validated_data):
+        order_items = validated_data.pop('dishes')
+
+        instance.is_done = validated_data.get('is_done', instance.is_done)
+        instance.save()
+
+        for dish in order_items:
+            order_item = OrderItem.objects.get(order=instance)
+            order_item.dish = dish['dish']
+            order_item.quantity = dish['quantity']
+            order_item.save()
+
+        return instance
 
 
 class OrderNumberSerializer(serializers.ModelSerializer):
