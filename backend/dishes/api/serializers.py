@@ -6,5 +6,5 @@ class DishSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dish
         fields = (
-            'name', 'price'
+            'id', 'name', 'price'
         )
